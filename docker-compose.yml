@@ -33,10 +33,12 @@ services:
             - mysql
         environment:
             - PMA_ARBITRARY=1
+            - PMA_HOST=mysql
+            - PMA_PORT=3036
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
-            - '${FORWARD_DB_PORT:-3306}:3306'
+            - '${FORWARD_DB_PORT:-3036}:3306'
         environment:
             MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ROOT_HOST: '%'
